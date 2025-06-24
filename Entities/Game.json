@@ -1,1 +1,70 @@
-Entities/Game.json
+{
+  "name": "Game",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "שם המשחק"
+    },
+    "buy_in_amount": {
+      "type": "number",
+      "description": "סכום הקנייה בשקלים"
+    },
+    "host_email": {
+      "type": "string",
+      "description": "מייל מארח המשחק"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "waiting",
+        "active",
+        "results_pending",
+        "completed"
+      ],
+      "default": "waiting",
+      "description": "סטטוס המשחק"
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "paid": {
+            "type": "boolean",
+            "default": false
+          },
+          "result": {
+            "type": "number",
+            "default": 0
+          },
+          "result_confirmed": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "description": "רשימת משתתפים"
+    },
+    "game_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "תאריך ושעת יצירת המשחק"
+    },
+    "game_code": {
+      "type": "string",
+      "description": "קוד הצטרפות למשחק"
+    }
+  },
+  "required": [
+    "title",
+    "buy_in_amount",
+    "host_email"
+  ]
+}
